@@ -22,31 +22,24 @@ discordBot.on('message', (message) => {
     message.channel.fetch().then(channel => { 
         if (channel.name == INPUT_CHANNEL_NAME) {
             try {
-
-
-
                 if (message.content) {
-                    
                     const splittedMessage = message.content.split("\n");
-                    console.log(splittedMessage);
                     if (splittedMessage.length > 0) {
-
                         if (splittedMessage.length == 11) {
-                            const steamNameRaw = splittedMessage[1].split(":")[1];
-                            const scumNameRaw = splittedMessage[2].split(":")[1];
-                            const steamIdRaw = splittedMessage[5].split(":")[1];
+                            const steamNameRaw = splittedMessage[1].split(":")[1].trim();
+                            const scumNameRaw = splittedMessage[2].split(":")[1].trim();
+                            const steamIdRaw = splittedMessage[5].split(":")[1].trim();
                 
                             const outPutMessage = "```" + moment().format('DD/MM/yyyy') + ';' + steamNameRaw + ';' + scumNameRaw + ';' + steamIdRaw + "```";
                             outPutChannel.send(outPutMessage);
                         } else {
-                            const steamNameRaw = splittedMessage[0].split(":")[1];
-                            const scumNameRaw = splittedMessage[1].split(":")[1];
-                            const steamIdRaw = splittedMessage[4].split(":")[1];
+                            const steamNameRaw = splittedMessage[0].split(":")[1].trim();
+                            const scumNameRaw = splittedMessage[1].split(":")[1].trim();
+                            const steamIdRaw = splittedMessage[4].split(":")[1].trim();
                 
                             const outPutMessage = "```" + moment().format('DD/MM/yyyy') + ';' + steamNameRaw + ';' + scumNameRaw + ';' + steamIdRaw + "```";
                             outPutChannel.send(outPutMessage);
                         }
-
                     }
                 }
             } catch(error) {
