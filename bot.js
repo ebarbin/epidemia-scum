@@ -1,4 +1,5 @@
 require('dotenv').config();
+const express = require('express');
 const Discord = require('discord.js');
 const moment = require('moment');
 
@@ -47,4 +48,10 @@ discordBot.on('message', (message) => {
             }
         }
     });
+});
+
+const PORT = process.env.PORT || 3000;
+const app = express();
+app.listen(PORT, () => {
+    console.log(`App is running on port ${ PORT }`);
 });
