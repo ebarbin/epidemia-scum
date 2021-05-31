@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/ebarbin/epidemia-scum#readme",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "moment": "^2.29.1"
   }
 }

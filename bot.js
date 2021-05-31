@@ -1,12 +1,38 @@
+require('dotenv').config();
 const Discord = require('discord.js');
+const moment = require('moment');
+
 const discordBot = new Discord.Client();
+const INPUT_CHANNEL_NAME = 'admin-new-players';
+const OUTPUT_CHANNEL_NAME = 'admin-new-players-csv';
+const AUTHOR_NAME = 'Xander646'; //'TEC1 Bot';
 
-discordBot.on('ready', () => console.log('Discord bot is connected.'));
-
-discordBot.on('message', (message) => {
-    console.log(message.author.username + ' ha dicho: \"' + message.content + '\"');
-    //console.log(message.author.username + ' ha dicho: \"' + message.content + '\"');
-});
+let outPutChannel = null;
 
 //Discord bot connect!
-discordBot.login('ODQ4OTA2MTE5ODk5OTA2MDQ4.YLTbbg.NWyKwoG9ueRdM412UdIMnMB22iM');
+discordBot.login(process.env.DISCORD_BOT_TOKEN);
+
+discordBot.on('ready', () => {
+    console.log('Discord bot is connected.')
+    outPutChannel = discordBot.channels.cache.find(channel => channel.name === OUTPUT_CHANNEL_NAME );
+});
+
+discordBot.on('message', (message) => {
+    if (message.author.username != AUTHOR_NAME) return;
+    message.channel.fetch().then(channel => { 
+        if (channel.name == INPUT_CHANNEL_NAME) {
+            try {
+                const splittedMessage = message.content.split("\n");
+            
+                const steamNameRaw = splittedMessage[0].split(":")[1].trim();
+                const scumNameRaw = splittedMessage[1].split(":")[1].trim();
+                const steamIdRaw = splittedMessage[4].split(":")[1].trim();
+    
+                const outPutMessage = moment().format('DD/MM/yyyy') + ';' + steamNameRaw + ';' + scumNameRaw + ';' + steamIdRaw;
+                outPutChannel.send(outPutMessage);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+    });
+});
