@@ -1,5 +1,5 @@
 {
-  "name": "epidemia-scum",
+  "name": "magios-welcome",
   "version": "1.0.1",
   "description": "Bot",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ebarbin/epidemia-scum.git"
+    "url": "git+https://github.com/ebarbin/magios-welcome.git"
   },
   "author": "ebarbin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ebarbin/epidemia-scum/issues"
+    "url": "https://github.com/ebarbin/magios-welcome/issues"
   },
-  "homepage": "https://github.com/ebarbin/epidemia-scum#readme",
+  "homepage": "https://github.com/ebarbin/magios-welcome#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
